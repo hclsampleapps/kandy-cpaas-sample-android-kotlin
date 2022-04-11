@@ -21,37 +21,23 @@ We are following **GitFlow** as the branching strategy and for release managemen
 
 The central repo holds two main branches with an infinite lifetime:
 
-- master
+- main
 - develop
 
-The `master` branch at origin should be familiar to every Git user. Parallel to the `master` branch, another branch exists called `develop`.
+The `main` branch at origin should be familiar to every Git user. Parallel to the `main` branch, another branch exists called `develop`.
 
-We consider `origin/master` to be the main branch where the source code of HEAD always reflects a *production-ready* state.
+We consider `origin/main` to be the main branch where the source code of HEAD always reflects a *production-ready* state.
 
 We consider `origin/develop` to be the main branch where the source code of HEAD always reflects a state with the latest delivered development changes for the next release.
 
 #### Supporting branches
-Next to the main branches `master` and `develop`, our development model uses a variety of supporting branches to aid parallel development between team members.
+Next to the main branches `main` and `develop`, our development model uses a variety of supporting branches to aid parallel development between team members.
 
 The different types of branches we may use are:
 
 - Feature branches
 - Release branches
 - Hotfix branches
-
-### Contributing
-Fork the repository. Then, run:
-
-```
-git clone --recursive git@github.com:<username>/gitflow.git
-cd kandy-cpaas-sample-android-kotlin
-git branch master origin/master
-git flow init -d
-git checkout develop
-git flow feature start <your feature>
-```
-
-Then, do work and commit your changes. When your `feature` is completed, raise the pull-request against `develop`.
 
 To know more about *GitFlow*, please refer
 
