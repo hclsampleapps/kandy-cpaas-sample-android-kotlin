@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Kandy CpaaS Kotlin</string>
+    <string name="enter_user_name">User name</string>
+    <string name="enter_user_password">User password</string>
+    <string name="enter_user_client">User client</string>
+    <string name="login">Login</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="enter_url">Base url</string>
+
+    <string name="enter_private_project_key">Enter Private Project key</string>
+    <string name="enter_private_project_secret">Enter Private Project secret</string>
+
+</resources>
