@@ -1,0 +1,1 @@
+# kandy-cpaas-sample-android-kotlin
