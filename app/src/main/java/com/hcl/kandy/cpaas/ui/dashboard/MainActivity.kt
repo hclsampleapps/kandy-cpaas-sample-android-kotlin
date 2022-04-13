@@ -59,8 +59,6 @@ class MainActivity : BaseActivity() {
         iceServers.addICEServer("stun:turn-ucc-1.genband.com:3478?transport=udp")
         iceServers.addICEServer("stun:turn-ucc-2.genband.com:3478?transport=udp")
         configuration.iceServers = iceServers
-        val codecSet = CodecSet()
-        configuration.preferredCodecSet = codecSet
         Globals.setApplicationContext(activity)
         val lifetime = 3600 //in seconds
         val services: MutableList<ServiceInfo> = ArrayList()
