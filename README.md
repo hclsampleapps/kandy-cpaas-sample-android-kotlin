@@ -51,3 +51,4 @@ Contributors should strictly follow JAVA standard conventions:
 1. Class names are in camelCase
 2. Package names start with lowerCase
 3. Variable names are in camelCase
+
