@@ -39,7 +39,7 @@ class MainActivity : BaseActivity() {
         progressUtils = ProgressUtils(this)
         activity = this
 
-        backparams = intent.getBundleExtra("android.intent.extra.INTENT")
+        backparams = intent.getBundleExtra("android.intent.extra.INTENT")!!
         Utils.instance.dumpIntent(backparams)
 
         initSDK()
