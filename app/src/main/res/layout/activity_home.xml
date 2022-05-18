@@ -45,6 +45,17 @@
             android:textSize="14sp" />
 
         <Button
+            android:id="@+id/multi_media"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@color/colorPrimary"
+            android:padding="16dp"
+            android:text="Mutimedia"
+            android:textColor="@android:color/white"
+            android:textSize="14sp" />
+
+        <Button
             android:id="@+id/logout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
