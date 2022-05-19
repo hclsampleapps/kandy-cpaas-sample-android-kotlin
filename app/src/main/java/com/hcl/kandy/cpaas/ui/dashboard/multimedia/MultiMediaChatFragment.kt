@@ -148,12 +148,12 @@ class MultiMediaChatFragment : BaseFragment() {
                 if (binding.etDestainationAddress.text.isEmpty()) {
                     showToastS("Please enter Destination Address.")
                 } else {
-                    binding.etDestainationAddress.setEnabled(false)
-                    binding.btnFetchChat.setVisibility(View.GONE)
-                    binding.showChatLayout.setVisibility(View.VISIBLE)
+                    binding.etDestainationAddress.isEnabled = false
+                    binding.btnFetchChat.visibility = View.GONE
+                    binding.showChatLayout.visibility = View.VISIBLE
                 }
             }
-            R.id.btnStartChat -> {
+            R.id.btnSendChat -> {
                 if (binding.etMessage.text.isEmpty()) {
                     showToastS("Please enter Message.")
 
@@ -164,8 +164,12 @@ class MultiMediaChatFragment : BaseFragment() {
                     )
                 }
             }
+            R.id.btnStartAttach -> {
+                attachFile()
+            }
         }
     }
+
 
     private fun sendMessage(participant: String, txt: String) {
         val chatConversation = chatService.createConversation(participant) as ChatConversation
