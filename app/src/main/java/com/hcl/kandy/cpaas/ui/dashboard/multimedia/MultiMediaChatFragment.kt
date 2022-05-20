@@ -176,65 +176,64 @@ class MultiMediaChatFragment : BaseFragment() {
         val message: OutboundMessage = chatService.createMessage(txt)
 
         if (uri != null) {
-            if (uri != null) {
-                val transferProgressListener =
-                    TransferProgressListener { bytes, totalBytes ->
-                        Log.d(
-                            "CPass",
-                            "Uploaded $bytes of $totalBytes bytes"
-                        )
-                    }
+            val transferProgressListener =
+                TransferProgressListener { bytes, totalBytes ->
+                    Log.d(
+                        "CPass",
+                        "Uploaded $bytes of $totalBytes bytes"
+                    )
+                }
 
 
-                val uploadCompleteListener: UploadCompleteListener =
-                    object : UploadCompleteListener {
-                        override fun uploadSuccess(attachment: Attachment) {
-                            Log.i("", "Attachment uploaded")
-                            attachments += attachment
-                            for (attachment1 in attachments) {
-                                message.attachFile(attachment1)
+            val uploadCompleteListener: UploadCompleteListener =
+                object : UploadCompleteListener {
+                    override fun uploadSuccess(attachment: Attachment) {
+                        Log.i("", "Attachment uploaded")
+                        attachments += attachment
+                        for (attachment1 in attachments) {
+                            message.attachFile(attachment1)
+                        }
+                        chatConversation.send(message, object : SendMessageCallback {
+                            override fun onSuccess(outboundMessage: OutboundMessage?) {
+                                uri = null
+                                // hideProgressBAr()
+                                showToastS("Success")
+                                Log.d("CPaaS.ChatService", "Message is sent")
                             }
-                            chatConversation.send(message, object : SendMessageCallback {
-                                override fun onSuccess(outboundMessage: OutboundMessage?) {
-                                    uri = null
-                                    // hideProgressBAr()
-                                    showToastS("Success")
-                                    Log.d("CPaaS.ChatService", "Message is sent")
-                                }
 
-                                override fun onFail(error: MobileError) {
-                                    Log.d("CPaaS.ChatService", "Message is failed")
-                                    // hideProgressBAr()
-                                    showToastS("Try again later")
-                                }
-                            })
-                        }
-
-                        override fun uploadFail(error: String) {
-                            //hideProgressBAr()
-                            showToastS(error);
-                            // Toast.makeText(activity, error, Toast.LENGTH_SHORT).show()
-                        }
+                            override fun onFail(error: MobileError) {
+                                Log.d("CPaaS.ChatService", "Message is failed")
+                                // hideProgressBAr()
+                                showToastS("Try again later")
+                            }
+                        })
                     }
 
-                val handle = chatService.uploadAttachment(
-                    uri,
-                    transferProgressListener,
-                    uploadCompleteListener
-                )
-            } else {
-
-                chatConversation.send(message, object : SendMessageCallback {
-                    override fun onSuccess(outboundMessage: OutboundMessage) {
-                        Log.d("CPaaS.ChatService", "Message is sent")
+                    override fun uploadFail(error: String) {
+                        //hideProgressBAr()
+                        showToastS(error);
+                        // Toast.makeText(activity, error, Toast.LENGTH_SHORT).show()
                     }
+                }
 
-                    override fun onFail(error: MobileError) {
-                        Log.d("CPaaS.ChatService", "Message is failed")
-                        showToastS("Try again later")
-                    }
-                })
-            }
+            val handle = chatService.uploadAttachment(
+                uri,
+                transferProgressListener,
+                uploadCompleteListener
+            )
+        } else {
+
+            chatConversation.send(message, object : SendMessageCallback {
+                override fun onSuccess(outboundMessage: OutboundMessage) {
+                    Log.d("CPaaS.ChatService", "Message is sent")
+                }
+
+                override fun onFail(error: MobileError) {
+                    Log.d("CPaaS.ChatService", "Message is failed")
+                    showToastS("Try again later")
+                }
+            })
         }
     }
+
 }
