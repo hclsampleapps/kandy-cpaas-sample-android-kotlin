@@ -12,6 +12,7 @@ import com.hcl.kandy.cpaas.databinding.ActivityHomeBinding
 import com.hcl.kandy.cpaas.ui.base.BaseFragment
 import com.hcl.kandy.cpaas.ui.dashboard.call.CallFragment
 import com.hcl.kandy.cpaas.ui.dashboard.chat.ChatFragment
+import com.hcl.kandy.cpaas.ui.dashboard.multimedia.MultiMediaChatFragment
 import com.hcl.kandy.cpaas.ui.dashboard.sms.SMSFragment
 import com.hcl.kandy.cpaas.ui.login.LoginActivity
 import com.hcl.kandy.cpaas.utils.MarshMallowPermission
@@ -33,6 +34,7 @@ class HomeFragment : BaseFragment() {
         binding.chat.setOnClickListener(this)
         binding.sms.setOnClickListener(this)
         binding.call.setOnClickListener(this)
+        binding.multiMedia.setOnClickListener(this)
         binding.logout.setOnClickListener(this)
         return binding.root
     }
@@ -45,9 +47,8 @@ class HomeFragment : BaseFragment() {
                 addFragment(ChatFragment())
             }
             R.id.logout -> {
-                goToActivity(activity!!, LoginActivity::class.java)
-
-                activity!!.finish()
+                goToActivity(requireActivity(), LoginActivity::class.java)
+                requireActivity().finish()
             }
             R.id.call -> {
                 Log.d("data", "<--------")
@@ -56,6 +57,10 @@ class HomeFragment : BaseFragment() {
             R.id.sms -> {
                 Log.d("data", "<--------")
                 addFragment(SMSFragment())
+            }
+            R.id.multi_media -> {
+                Log.d("data", "<--------")
+                addFragment(MultiMediaChatFragment())
             }
         }
     }

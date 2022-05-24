@@ -2,12 +2,14 @@ package com.hcl.kandy.cpaas.ui.base
 
 import android.app.Activity
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.PersistableBundle
 import android.util.Log
 import android.view.View
 import android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.hcl.kandy.cpaas.R
@@ -25,6 +27,7 @@ abstract class BaseActivity : AppCompatActivity(),
     private var backPressedToExitOnce: Boolean = false
     protected lateinit var progressUtils: ProgressUtils
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
 
