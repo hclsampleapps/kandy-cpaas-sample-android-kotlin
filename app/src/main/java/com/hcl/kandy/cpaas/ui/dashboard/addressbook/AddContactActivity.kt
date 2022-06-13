@@ -108,6 +108,7 @@ class AddContactActivity : BaseFragment(), View.OnClickListener {
             override fun onSuccess(contact: Contact) {
                 showToastS("Contact Added successfully")
                 Log.d("HCL", "Addressbook contact add success")
+                requireActivity().finish()
             }
 
             override fun onFail(mobileError: MobileError) {
