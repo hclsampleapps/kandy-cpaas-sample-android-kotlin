@@ -9,6 +9,7 @@ import android.os.PersistableBundle
 import android.util.Log
 import android.view.View
 import android.view.WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -41,6 +42,10 @@ abstract class BaseActivity : AppCompatActivity(),
         activity = this;
         mFragmentStack = Stack()
 
+    }
+    fun showToastS(message: String?) {
+        val toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT)
+        toast.show()
     }
 
     open fun hideAllFragment() {

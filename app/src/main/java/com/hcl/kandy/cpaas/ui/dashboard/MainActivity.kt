@@ -65,6 +65,7 @@ class MainActivity : BaseActivity() {
         services.add(ServiceInfo(ServiceType.SMS, true))
         services.add(ServiceInfo(ServiceType.CALL, true))
         services.add(ServiceInfo(ServiceType.CHAT, true))
+        services.add(ServiceInfo(ServiceType.ADDRESSBOOK, true))
         mCpaas = CPaaS(services)
         val authentication: Authentication = mCpaas.getAuthentication()
         authentication.setToken(backparams[Utils.instance.access_token].toString())

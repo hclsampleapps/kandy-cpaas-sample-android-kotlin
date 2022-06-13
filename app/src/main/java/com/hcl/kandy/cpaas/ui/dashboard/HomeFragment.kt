@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.hcl.kandy.cpaas.R
 import com.hcl.kandy.cpaas.databinding.ActivityHomeBinding
+import com.hcl.kandy.cpaas.ui.dashboard.addressbook.AddressBookList
 import com.hcl.kandy.cpaas.ui.base.BaseFragment
 import com.hcl.kandy.cpaas.ui.dashboard.call.CallFragment
 import com.hcl.kandy.cpaas.ui.dashboard.chat.ChatFragment
@@ -35,6 +36,7 @@ class HomeFragment : BaseFragment() {
         binding.sms.setOnClickListener(this)
         binding.call.setOnClickListener(this)
         binding.multiMedia.setOnClickListener(this)
+        binding.addressbook.setOnClickListener(this)
         binding.logout.setOnClickListener(this)
         return binding.root
     }
@@ -45,6 +47,10 @@ class HomeFragment : BaseFragment() {
             R.id.chat -> {
                 Log.d("data", "<--------")
                 addFragment(ChatFragment())
+            }
+            R.id.addressbook -> {
+                Log.d("data", "<--------")
+                addFragment(AddressBookList())
             }
             R.id.logout -> {
                 goToActivity(requireActivity(), LoginActivity::class.java)
